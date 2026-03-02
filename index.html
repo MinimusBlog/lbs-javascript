@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">Support</a>
+        <nav class="nav">
+            <a href="#" class="nav-link">Главная</a>
+            <a href="#" class="nav-link">Создать обращение</a>
+            <a href="#" class="nav-link">Личный кабинет</a>
+        </nav>
+    </header>
+    <div class="container">
+        <section class="hero">
+            <h1>Добро пожаловать в Support!</h1>
+            <p>Мы помогаем решать технические вопросы быстро и удобно.</p>
+            <button class="btn-primary" id="btn-primary">Создать обращение</button>
+        </section>
+
+        <!-- 3.1 Задание модификация верстки -->
+        <section class="lists">
+            <h2>Списки обращений</h2>
+            <div class="list-btns">
+                <button id="btn-all">Показать все записи</button>
+                <button id="btn-new">Показать только NEW</button>
+                <button id="btn-stats">Показать статистику</button>
+            </div>
+            <pre id="output"></pre>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

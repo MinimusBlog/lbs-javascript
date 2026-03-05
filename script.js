@@ -115,7 +115,7 @@ for (let i = 0; i < tickets.length; i++) {
 console.log('Количество тикетов со статусом \"new\":', statusCount);
 
 // 3.2 Задание
-document.addEventListener('DOMContentLoaded', () => {
+/* document.addEventListener('DOMContentLoaded', () => {
 
     // Находим все элементы на странице по id
     const btnAll = document.getElementById('btn-all');
@@ -194,4 +194,80 @@ document.addEventListener('DOMContentLoaded', () => {
 
         output.textContent = statsText;
     });
+}); */
+
+// Task 2.1.6 F
+const messageEl = document.getElementById('message');
+messageEl.textContent = 'DOM работает';
+
+// 
+const demoList = document.getElementById('demoList');
+for (let i = 1; i <= 3; i++) {
+    const p = document.createElement('p');
+    p.textContent = `Текст ${i}`;
+    demoList.appendChild(p);
+}
+
+// 2.6 list via DOM-model
+const listEl = document.getElementById("list");
+function clearList() {
+    listEl.innerHTML = "";
+}
+// рендер списка
+function renderList(itemsToRender) {
+    clearList();
+
+    for (const item of itemsToRender) {
+        const card = document.createElement("div"); // создание контейнера карточки
+        card.className = "card";
+
+        const h3 = document.createElement("h3"); // заголовок карточки
+        h3.textContent = `${item.title}`;
+
+        const info = document.createElement("p"); // информация внутри карточки
+        info.textContent = `id = ${item.id} | value = ${item.value} |
+        status = ${item.status} | createdAt = ${item.createdAt}`;
+
+        const btnRemove = document.createElement("button"); // кнопка удалить
+        btnRemove.textContent = "Удалить";
+        btnRemove.dataset.action = "remove";
+        btnRemove.dataset.id = String(item.id);
+
+        card.appendChild(h3);
+        card.appendChild(info);
+        card.appendChild(btnRemove);
+
+        listEl.appendChild(card);
+    }
+}
+renderList(items); // рендер списка
+
+//task 2.7
+const btnAll = document.getElementById('btn-all');
+const btnNew = document.getElementById('btn-new');
+const btnStats = document.getElementById('btn-stats');
+const btnSort = document.getElementById('btn-sort');
+
+btnAll.addEventListener("click", () => {
+    renderList(items);
+    messageEl.textContent = "";
+});
+
+btnNew.addEventListener("click", () => {
+    renderList(filterByStatus(items, "New"));
+    messageEl.textContent = "";
+});
+
+btnSort.addEventListener("click", () => {
+    renderList(SortByValueDesc(items));
+    messageEl.textContent = "";
+});
+
+btnStats.addEventListener("click", () => {
+    const stats = buildStats(items);
+    messageEl.textContent =
+        `Всего записей: ${stats.totalCount}\n` +
+        `Сумма значений: ${stats.sumValue}\n` +
+        `Максимум значений: ${stats.maxValue}\n` +
+        `Количество status = "New": ${stats.newCount}`;
 });

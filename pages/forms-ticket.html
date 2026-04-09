@@ -15,17 +15,49 @@
             <a href="#" class="nav-link">Личный кабинет</a>
         </nav>
     </header>
-    <h1>Создание обращения</h1>
-    <form action="">
-        <p>
-            <label for="name">Введите имя:</label>
-            <input type="text" name="name" id="name" required>
-        </p>
-        <p>
-            <label for="email">Эл.почта:</label>
-            <input type="email" name="email" id="email" required>
-        </p>
-        <button type="submit">Отправить</button>
-    </form>
+    <div class="container">
+        <section>
+            <h2>Создать обращения</h2>
+            <form id="recordForm">
+                <p>
+                    <input type="text" name="title" id="titleInput" placeholder="Тема обращения">
+                </p>
+                <p>
+                    <input type="number" name="value" id="valueInput" placeholder="Приоритет (1-5)">
+                </p>
+                <p>
+                    <input type="text" name="createdAt" id="createdAtInput" placeholder="Дата (ГГГГ-ММ-ДД)">
+                </p>
+                <p>
+                    <select name="status" id="statusInput">
+                        <option value="new">new</option>
+                        <option value="done">done</option>
+                    </select>
+                </p>
+                <button type="submit">Сохранить</button>
+            </form>
+            <div id="formErrors" style="color: red; margin: 10px;"></div>
+            <div id="message"></div>
+        </section>
+
+        <hr>
+
+        <section class="lists">
+            <div class="list-btns">
+                <button id="btn-all">Показать все</button>
+                <button id="btn-new">Показать только NEW</button>
+                <button id="btn-stats">Показать статистику</button>
+                <button id="btn-sort">Сортировать значение по убыванию</button>
+            </div>
+        </section>
+
+        <section>
+            <button id="loadData">Загрузить данные</button>
+            <div id="list" style="margin: 20px;"></div>
+        </section>
+    </div>
+    <script src="../data.js"></script>
+    <script src="../logic.js"></script>
+    <script src="../script.js"></script>
 </body>
 </html>
